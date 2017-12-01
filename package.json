@@ -1,0 +1,25 @@
+{
+  "name": "jumblr",
+  "version": "1.0.0",
+  "description": "This is a chat game that gives you jumbled words to untangle :books:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heyAyushh/jumblr.git"
+  },
+  "author": "Ayush Chauhan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heyAyushh/jumblr/issues"
+  },
+  "homepage": "https://github.com/heyAyushh/jumblr#readme",
+  "dependencies": {
+    "botbuilder": "^3.12.0",
+    "random-word": "^2.0.0",
+    "restify": "^6.3.4"
+  }
+}
