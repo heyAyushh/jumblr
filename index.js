@@ -35,14 +35,14 @@ bot.dialog(' start ', [
 
         word = randomWord();
         shuffle = shuffleWord(word);
-
+        console.log(word);
         session.send('Solve the Jumbled word ');
 
         builder.Prompts.text(session,shuffle);
     },
 
     function (session, results) {
-        if (results.response.entity == word) {
+        if (check(word,results.response) == 1) {
             session.sendTyping();
             session.send("Yes, You are Right ");
 
@@ -84,7 +84,6 @@ function shuffleWord (word){
     while (word.length > 0) {
       shuffledWord +=  word.splice(word.length * Math.random() << 0, 1);
     }
-    console.log(shuffledWord);
     return shuffledWord;
 }
 require('./dialogs');
