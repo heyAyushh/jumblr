@@ -64,7 +64,7 @@ bot.dialog(' start ', [
         else {
             session.sendTyping();
             session.send("Sorry, You are Wrong ");
-            session.send("Right answer is ",word);
+            session.send("Right answer is "+ word);
             T.post('statuses/update', { status: ' I told ya, You can\'t win from me 🤪.The Jumbled word was '+ shuffle + ' and the answer was' + word + '. Damn easy 🙌' }, function(err, data, response) {
                 console.log(data)
               })
