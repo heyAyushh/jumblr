@@ -6,10 +6,10 @@ var randomWord = require('random-word');
 var Twit = require('twit');
 
 var T = new Twit({
-    consumer_key:         'dIpE57b4inAVEV3dG3vz3ZTvk',
-    consumer_secret:      'zskH3GTmS2pKv5TGi80FFfrvtF2qE3sFLCNw2sZq8fjggpZul6',
-    access_token:         '2784419143-TVbKk2BLIB0NZOMF93rYFZfR2DAKihf2si9OsnI',
-    access_token_secret:  '6v7h1Ua8NHLtYPyFMIO2VIG7GbRIQu4Ra8VqbNgcFZVhD',
+    consumer_key:         '...',
+    consumer_secret:      '...',
+    access_token:         '...',
+    access_token_secret:  '...',
     timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests. 
   })
 
