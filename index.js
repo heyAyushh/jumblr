@@ -3,6 +3,15 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 var randomWord = require('random-word');
+var Twit = require('twit');
+
+var T = new Twit({
+    consumer_key:         '...',
+    consumer_secret:      '...',
+    access_token:         '...',
+    access_token_secret:  '...',
+    timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests. 
+  })
 
 var word;
 var shuffle;
@@ -47,11 +56,18 @@ bot.dialog(' start ', [
             session.send("Yes, You are Right ");
             session.send("Right answer is ",word);
 
+            T.post('statuses/update', { status: ' A user just Won by cheating 😂. The Jumbled word was '+ shuffle + ' and the answer was' + word + '. Damn easy 🙌' }, function(err, data, response) {
+                console.log(data)
+              })
+
         }
         else {
             session.sendTyping();
             session.send("Sorry, You are Wrong ");
             session.send("Right answer is ",word);
+            T.post('statuses/update', { status: ' I told ya, You can\'t win from me 🤪.The Jumbled word was '+ shuffle + ' and the answer was' + word + '. Damn easy 🙌' }, function(err, data, response) {
+                console.log(data)
+              })
             
         }
         session.endDialogWithResult(results);
