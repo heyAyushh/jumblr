@@ -45,11 +45,13 @@ bot.dialog(' start ', [
         if (check(word,results.response) == 1) {
             session.sendTyping();
             session.send("Yes, You are Right ");
+            session.send("Right answer is ",word);
 
         }
         else {
             session.sendTyping();
             session.send("Sorry, You are Wrong ");
+            session.send("Right answer is ",word);
             
         }
         session.endDialogWithResult(results);
