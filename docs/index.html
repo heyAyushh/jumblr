@@ -1,41 +1,94 @@
-  
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>जumblr</title>
         <script src="particle-text.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link href="https://cdn.botframework.com/botframework-webchat/latest/botchat.css" rel="stylesheet" />
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <body bgcolor="#000000"></body>
+
         <style>
             * {margin:0;}
             h1, h2 {
                 color: rgb(196, 193, 193);
                 font-family: helvetica;
-                font-size: 140px;
+                font-size: 40px;
                 font-weight: "bold";
-                margin: 40px;
-                text-align: center;
+                margin: 10px;
+                text-align: left;
             }
             .wrap {
                 position: relative;
             }
-            #canvas1,#canvas2 {
-                margin: -5% 0 0 15%;
+            #canvas2 {
+                height: 50%;
+                width:  50%;
             }
-            #canvas3 {
-                position: absolute;
-                top : 20%;
-                right: 100px;
-            }
+
         </style>
     </head>
     <body>
-        
+                <h1> Play Jumblr here or Add me on Skype </h1>
+                <div style="text-align: center;">
+            
+            </div>
+                <a id="chatButton" class="btn-floating btn-large waves-effect waves-light" style="position: fixed;z-index: 10000;bottom: 1em;right: 1em;background:#0078d7">
+                    <i class="material-icons">chat</i>
+                </a>
+                <div id="webchat" class="z-depth-1 scale-transition scale-out" style="background:white; border: 1px solid #0078d7;position: fixed;z-index: 10000;bottom: 6em;right: 1em;width: 400px;height:600px;"></div>
+                <script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script>
+                <script>
+            
+                    BotChat.App({
+                        directLine: { secret: '-ufZQJlUeI8.cwA.zXA.1p76rZu9YhuP1Xwfj_A-MJ_Prgb9ti5Wk86UzYOmH8c' },
+                        user: { id: 'user' },
+                        bot: { id: 'bot' },
+                        resize: 'detect',
+                        formatOptions: { showHeader: true },
+                        locale: 'en-us'
+                    }, document.getElementById("webchat"));
+            
+                    function toggleClassName() {
+            
+                        console.log('ToggleChat');
+            
+                        const botchat = document.getElementById('webchat');
+            
+                        if (botchat.classList.contains('scale-out')) {
+                            botchat.classList.add('scale-in');
+                            botchat.classList.remove('scale-out');
+                        } else {
+                            botchat.classList.remove('scale-in');
+                            botchat.classList.add('scale-out');
+                        }
+            
+                    }
+            
+                    document.getElementById('chatButton').addEventListener('click', toggleClassName);
+            
+                    var header = document.getElementsByClassName('wc-header')[0];
+                    while (header.firstChild) {
+                        header.removeChild(header.firstChild);
+                    }
+                    var headerSpan = document.createElement('SPAN');
+                    headerSpan.innerHTML = 'Webchat';
+                    header.appendChild(headerSpan);
+            
+                </script>
+                <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
         <div class="wrap">
-            <h1>Have YOU</h1>
-            <canvas id="canvas1"></canvas>
             <canvas id="canvas2"></canvas>
-            <canvas id="canvas3"></canvas>
         </div>
-        <iframe src='https://webchat.botframework.com/embed/jumblrbot?s=5hzYPLyz0BA.cwA.PLE.6ivS7WfdpJVMOUAO5fpKbsnDlTRK6RyhqbjGa_ANOtQ' width="400" height="400"></iframe>
+
+        <a href='https://join.skype.com/bot/c66cb2cb-2a08-4a17-b120-d359685fe6b1'><img src='https://dev.botframework.com/Client/Images/Add-To-Skype-Buttons.png'/></a>
+        
         <script>
             // simple debouncer for events
             var debounce = function(func, wait, immediate) {
@@ -54,33 +107,16 @@
             };
             // setup particle gravity text
             window.onload = function() {
-                var pt1 = new ParticleText('tried',{
-                     canvas : 'canvas1',
-                     density: 8,
-                     size: 6,
-                     font : {
-                        color : '#83CEB8',
-                        size: 22
-                    }
-                });
                 var pt2 = new ParticleText('जumblr',{
                      canvas : 'canvas2',
                      density: 8,
-                     size: 6,
+                     size: 3,
                      font : {
                         color : '#EA3341',
-                        size: 22
+                        size: 12
                     }
                 });
-                var pt3 = new ParticleText('game?',{
-                     canvas : 'canvas3',
-                     density: 4,
-                     size: 2,
-                     font : {
-                        color : '#444',
-                        size: 40
-                    }
-                });
+
                 // debounced resize event
                 var efficientResize = debounce(function(){
                     pt1.destroy();
