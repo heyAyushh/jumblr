@@ -6,10 +6,10 @@ var randomWord = require('random-word');
 var Twit = require('twit');
 
 var T = new Twit({
-    consumer_key:         '...',
-    consumer_secret:      '...',
-    access_token:         '...',
-    access_token_secret:  '...',
+    consumer_key:         'lol',
+    consumer_secret:      'lol',
+    access_token:         'lol',
+    access_token_secret:  'lulzk',
     timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests. 
   })
 
@@ -56,7 +56,7 @@ bot.dialog(' start ', [
             session.send("Yes, You are Right ");
             session.send("Right answer is ",word);
 
-            T.post('statuses/update', { status: ' A user just Won by cheating 😂. The Jumbled word was '+ shuffle + ' and the answer was' + word + '. Damn easy 🙌' }, function(err, data, response) {
+            T.post('statuses/update', { status: ' A user just Won by cheating 😂. The Jumbled word was '+ shuffle + ' and the answer was ' + word + '. Damn easy 🙌' }, function(err, data, response) {
                 console.log(data)
               })
 
@@ -65,7 +65,7 @@ bot.dialog(' start ', [
             session.sendTyping();
             session.send("Sorry, You are Wrong ");
             session.send("Right answer is "+ word);
-            T.post('statuses/update', { status: ' I told ya, You can\'t win from me 🤪.The Jumbled word was '+ shuffle + ' and the answer was' + word + '. Damn easy 🙌' }, function(err, data, response) {
+            T.post('statuses/update', { status: ' Another stupid human lost by me 🤪. The Jumbled word was '+ shuffle + ' . The stupid Human\'s answer was '+ results.response +'. The correct answer was' + word + '. ' }, function(err, data, response) {
                 console.log(data)
               })
             
