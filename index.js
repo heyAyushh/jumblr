@@ -54,7 +54,7 @@ bot.dialog(' start ', [
         if (check(word,results.response) == 1) {
             session.sendTyping();
             session.send("Yes, You are Right ");
-            session.send("Right answer is ",word);
+            session.send("Right answer is "+ word);
 
             T.post('statuses/update', { status: ' A user just Won by cheating 😂. The Jumbled word was '+ shuffle + ' and the answer was ' + word + '. Damn easy 🙌' }, function(err, data, response) {
                 console.log(data)
