@@ -2,6 +2,8 @@
 
 var restify = require('restify');
 var builder = require('botbuilder');
+var count;
+var score=0;
 var randomWord = require('random-word');
 var Twit = require('twit');
 
@@ -36,58 +38,51 @@ global.bot = new builder.UniversalBot(connector, (session) => {
      session.beginDialog(' start ');
 
 });
-
-
+              
+              
 bot.dialog(' start ', [
-    function (session) {
-        session.sendTyping();
-
-        word = randomWord();
-        shuffle = shuffleWord(word);
-        console.log(word);
-        session.send('Solve the Jumbled word ');
-
-        builder.Prompts.text(session,shuffle);
-    },
-
-    function (session, results) {
-        if (check(word,results.response) == 1) {
-            session.sendTyping();
-            session.send("Yes, You are Right ");
-            session.send("Right answer is "+ word);
-
-            T.post('statuses/update', { status: ' A user just Won by cheating 😂. The Jumbled word was '+ shuffle + ' and the answer was ' + word + '. Damn easy 🙌' }, function(err, data, response) {
-                console.log(data)
-              })
-
-        }
-        else {
-            session.sendTyping();
-            session.send("Sorry, You are Wrong ");
-            session.send("Right answer is "+ word);
-            T.post('statuses/update', { status: ' Another stupid human lost by me 🤪. The Jumbled word was '+ shuffle + ' . The stupid Human\'s answer was '+ results.response +'. The correct answer was' + word + '. ' }, function(err, data, response) {
-                console.log(data)
-              })
-            
-        }
-        session.endDialogWithResult(results);
-    }
+{       
+        function(session){
+            count=0;
+                    
+        while(0)      {
+                            
+                            fuction(session) {
+                                session.sendTyping();
+                            word = randomWord();
+                            shuffle = shuffleWord(word);
+                            console.log(word);
+                            session.send('Solve the Jumbled word ');
+                    
+                            builder.Prompts.text(session,shuffle);
+                        },
+                    
+                        function (session, results) {
+                            if (check(word,results.response) == 1) {
+                                session.sendTyping();
+                                session.send("Yes, You are Right ");
+                                session.send("Right answer is "+ word); 
+                                T.post('statuses/update', { status: ' A user just Won by cheating 😂. The Jumbled word was '+ shuffle + ' and the answer was ' + word + '. Damn easy 🙌' }, function(err, data, response) {
+                                    console.log(data)
+                                  })
+                    
+                            }
+                            else {
+                                session.sendTyping();
+                                session.send("Sorry, You are Wrong ");
+                                session.send("Right answer is "+ word);
+                                T.post('statuses/update', { status: ' Another stupid human lost by me 🤪. The Jumbled word was '+ shuffle + ' . The stupid Human\'s answer was '+ results.response +'. The correct answer was' + word + '. ' }, function(err, data, response) {
+                                    console.log(data)
+                                  })
+                                
+                            }
+                            session.endDialogWithResult(results);
+                        }
+              
+          }
+      
+  
 ]);
-
-function evalscore(count)
-{
-    if(count==1)
-    {
-        score++;
-        return 0;
-    }
-    else
-    {
-        score--;
-        return 0;
-    }
-    
-}
 
 function check(temp, word)
 {
