@@ -36,50 +36,10 @@
                 
                 <div style="text-align: center;">
                         <h1> Play Jumblr here or Add me on Skype </h1>
-            </div>
-                <a id="chatButton" class="btn-floating btn-large waves-effect waves-light" style="position: fixed;z-index: 10000;bottom: 1em;right: 1em;background:#0078d7">
-                    <i class="material-icons">chat</i>
-                </a>
-                <div id="webchat" class="z-depth-1 scale-transition scale-out" style="background:white; border: 1px solid #0078d7;position: fixed;z-index: 10000;bottom: 6em;right: 1em;width: 400px;height:600px;"></div>
-                <script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script>
-                <script>
-            
-                    BotChat.App({
-                        directLine: { secret: '-ufZQJlUeI8.cwA.zXA.1p76rZu9YhuP1Xwfj_A-MJ_Prgb9ti5Wk86UzYOmH8c' },
-                        user: { id: 'user' },
-                        bot: { id: 'bot' },
-                        resize: 'detect',
-                        formatOptions: { showHeader: true },
-                        locale: 'en-us'
-                    }, document.getElementById("webchat"));
-            
-                    function toggleClassName() {
-            
-                        console.log('ToggleChat');
-            
-                        const botchat = document.getElementById('webchat');
-            
-                        if (botchat.classList.contains('scale-out')) {
-                            botchat.classList.add('scale-in');
-                            botchat.classList.remove('scale-out');
-                        } else {
-                            botchat.classList.remove('scale-in');
-                            botchat.classList.add('scale-out');
-                        }
-            
-                    }
-            
-                    document.getElementById('chatButton').addEventListener('click', toggleClassName);
-            
-                    var header = document.getElementsByClassName('wc-header')[0];
-                    while (header.firstChild) {
-                        header.removeChild(header.firstChild);
-                    }
-                    var headerSpan = document.createElement('SPAN');
-                    headerSpan.innerHTML = 'Webchat';
-                    header.appendChild(headerSpan);
-            
-                </script>
+
+                        <span class="skype-button bubble " data-bot-id="6fcafc31-2387-4823-b843-decb40f52e4f"></span>
+                        <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
+
                 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
@@ -87,7 +47,7 @@
             <canvas id="canvas2"></canvas>
         </div>
 
-        <a href='https://join.skype.com/bot/c66cb2cb-2a08-4a17-b120-d359685fe6b1'><img src='https://dev.botframework.com/Client/Images/Add-To-Skype-Buttons.png'/></a>
+        <a href='https://join.skype.com/bot/'><img src='https://dev.botframework.com/Client/Images/Add-To-Skype-Buttons.png'/></a>
         
         <script>
             // simple debouncer for events
